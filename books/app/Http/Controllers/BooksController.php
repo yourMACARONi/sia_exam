@@ -33,7 +33,7 @@ Class BooksController extends Controller {
         ];
 
         $this->validate($request,$rules);
-        $authors = Author::findOrFail(request("id"));
+        $authors = Author::findOrFail($request->author_id);
         $books = Books::create($request->all());
         return $this -> successResponse($books, Response::HTTP_CREATED);
     }
